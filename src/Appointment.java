@@ -54,4 +54,13 @@ public class Appointment {
 
     // Getter for cancellation logic
     public String getPatientMobile() { return patientMobile; }
+
+    // Add Getter methods to access selectedDoctor and timeSlot
+    public HealthProfessional getSelectedDoctor() {
+        return selectedDoctor;
+    }
+
+    public String getTimeSlot() {
+        return timeSlot;
+    }
 }
