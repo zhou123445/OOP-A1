@@ -46,6 +46,12 @@ public class AssignmentOne {
         System.out.println("\n=== All Appointments After Cancellation ===");
         printExistingAppointments();
 
+        // Added: Call the method for filtering appointments by doctor type
+        System.out.println("\n=== Filtered Appointments (General Practitioner) ===");
+        printAppointmentsByDoctorType("General Practitioner");
+        System.out.println("\n=== Filtered Appointments (Radiologist) ===");
+        printAppointmentsByDoctorType("Radiologist");
+
 
         System.out.println("------------------------------");
     }
@@ -102,6 +108,23 @@ public class AssignmentOne {
         }
         if (!removed) {
             System.out.println("No appointment found for " + patientMobile);
+        }
+    }
+
+    /** Prints appointments filtered by doctor type (e.g., "General Practitioner", "Radiologist"). */
+    private static void printAppointmentsByDoctorType(String type) {
+        boolean found = false;
+        for (Appointment appt : appointmentList) {
+            HealthProfessional doc = appt.getSelectedDoctor();
+            if ((doc instanceof GeneralPractitioner && type.equals("全科医生")) ||
+                    (doc instanceof Radiologist && type.equals("放射科医生"))) {
+                System.out.println("\n--- Filtered Appointment (Type: " + type + ") ---");
+                appt.printDetails();
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No appointments found for " + type);
         }
     }
 }
