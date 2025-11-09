@@ -116,15 +116,15 @@ public class AssignmentOne {
         boolean found = false;
         for (Appointment appt : appointmentList) {
             HealthProfessional doc = appt.getSelectedDoctor();
-            if ((doc instanceof GeneralPractitioner && type.equals("全科医生")) ||
-                    (doc instanceof Radiologist && type.equals("放射科医生"))) {
+            if (doc instanceof GeneralPractitioner && type.equals("General Practitioner") ||
+                    doc instanceof Radiologist && type.equals("Radiologist")) {
                 System.out.println("\n--- Filtered Appointment (Type: " + type + ") ---");
                 appt.printDetails();
                 found = true;
             }
         }
         if (!found) {
-            System.out.println("No appointments found for " + type);
+            System.out.println("No appointments found for type: " + type);
         }
     }
 }
